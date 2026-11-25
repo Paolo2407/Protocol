@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Ricettacolo</title>
+<meta name="description" content="Il ricettario di casa, con il calcolo delle dosi, i preferiti e la lista della spesa.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Ricettacolo">
+<meta name="theme-color" content="#f8f3eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191512" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main id="app" class="wrap"></main>
+
+<nav class="navbar" aria-label="Sezioni">
+  <div class="in">
+    <a href="#/" data-tab="ricette">
+      <span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6"/></svg></span>Ricette
+    </a>
+    <a href="#/preferiti" data-tab="preferiti">
+      <span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg></span>Preferiti
+    </a>
+    <a href="#/spesa" data-tab="spesa">
+      <span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h2l2.2 10.2a1.5 1.5 0 0 0 1.5 1.2h7.6a1.5 1.5 0 0 0 1.5-1.2L20 8H7"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><b class="badge" id="badgeSpesa" hidden></b></span>Spesa
+    </a>
+  </div>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="dati/ricette.js"></script>
+<script src="js/app.js"></script>
+<script>
+/* Uso offline: il service worker si registra solo sulla versione pubblicata su GitHub Pages
+   (o in locale), non dentro l'anteprima di Claude. */
+if ('serviceWorker' in navigator && (location.hostname.endsWith('github.io') || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
